@@ -477,6 +477,20 @@ void loop() {
     initializeToWriteTxtLogFile(currentChannel, logOrdinal[currentChannel - 1]);
     /*CREATING TXT LOG FILE HEADER ########################################
     */
+    rtc.refresh();
+    currentOpenFile.println(F("ANO|MES|DIA|HORA|MINUTO|SEGUNDO"));//rtc.hour() returns a uint8_t
+    currentOpenFile.println(rtc.year());//rtc.hour() returns a uint8_t
+    currentOpenFile.println(rtc.month());//rtc.hour() returns a uint8_t
+    currentOpenFile.println(rtc.day());//rtc.hour() returns a uint8_t
+    currentOpenFile.println(rtc.hour());//rtc.hour() returns a uint8_t
+    currentOpenFile.println(rtc.minute());//rtc.minute() returns a uint8_t
+    currentOpenFile.println(rtc.second());//rtc.second() returns a uint8_t
+    currentOpenFile.println(F("FREQUENCIA_AMOSTRAGEM(HZ)"));//rtc.hour() returns a uint8_t
+    currentOpenFile.println(samplingFrequency);
+    currentOpenFile.println(F("DURACAO_AMOSTRAGEM_CONFIGURADA(SEGUNDOS)"));//rtc.hour() returns a uint8_t
+    currentOpenFile.println(samplingDuration);
+    //currentOpenFile.println(F("QUANTIDADE_DE_AMOSTRAS"));//rtc.hour() returns a uint8_t
+    //currentOpenFile.println(totalSamples);
     if (sysConfig.tempHumSensorOption == 1) {
       currentOpenFile.println(F("TEMPERATURA(C)|UMIDADE(%)"));//rtc.hour() returns a uint8_t
       //if tempHumSensorOption==1, the sensor is connected to the system.
@@ -500,20 +514,6 @@ void loop() {
       }
       currentOpenFile.println(dhtValue);
     }
-    rtc.refresh();
-    currentOpenFile.println(F("ANO|MES|DIA|HORA|MINUTO|SEGUNDO"));//rtc.hour() returns a uint8_t
-    currentOpenFile.println(rtc.year());//rtc.hour() returns a uint8_t
-    currentOpenFile.println(rtc.month());//rtc.hour() returns a uint8_t
-    currentOpenFile.println(rtc.day());//rtc.hour() returns a uint8_t
-    currentOpenFile.println(rtc.hour());//rtc.hour() returns a uint8_t
-    currentOpenFile.println(rtc.minute());//rtc.minute() returns a uint8_t
-    currentOpenFile.println(rtc.second());//rtc.second() returns a uint8_t
-    currentOpenFile.println(F("FREQUENCIA_AMOSTRAGEM(HZ)"));//rtc.hour() returns a uint8_t
-    currentOpenFile.println(samplingFrequency);
-    currentOpenFile.println(F("DURACAO_AMOSTRAGEM_CONFIGURADA(SEGUNDOS)"));//rtc.hour() returns a uint8_t
-    currentOpenFile.println(samplingDuration);
-    //currentOpenFile.println(F("QUANTIDADE_DE_AMOSTRAS"));//rtc.hour() returns a uint8_t
-    //currentOpenFile.println(totalSamples);
     currentOpenFile.close();
   }
 
